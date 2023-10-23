@@ -1,39 +1,43 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import petfinderClient from "./Auth";
 
 function Search() {
+    const [searchQuery, setSearchQuery] = useState('');
     const [pets, setPets] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const apiKey = 'cVEh9CQR6G8Gp4pGqZx04kfMqZcyaMCSwTfBDDd3KAhryFTr1K';
-        const apiSecret = 'aJ8SesbkMHtKj2OHp26zW8ievVDK2ZPzQFCaIEOi';
+    const handleSearch = () => {
+        setLoading(true);
+        setPets([]);
 
-        const searchQuery = 'animal=dog&location=New York, NY&limit=10';
-
-        const apiUrl = `https://api.petfinder.com/v2/animals?${searchQuery}`;
-
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(apiUrl, {
-                    headers: {
-                        Authorization:`Bearer ${apiKey}:${apiSecret}`,
-                    },
-                });
-                setPets(response.data.animals);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            }
+        const searchLocation = searchQuery;
+        const searchOptions = {
+            location: searchLocation,
+            type: 'dog',
         };
 
-        fetchData();
-    }, []);
+        petfinderClient.animal.search(searchOptions).then((response) => {
+            setPets(response.data.animals);
+            setLoading(false);
+        })
+        .catch((error) => {
+            console.error('Error fetching pet data:', error);
+            setLoading(false);
+        });
+    };
 
     return (
         <div className="search-container">
             <h1 className="search-title">Pet Search</h1>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Enter location (e.g., city, state)"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button onClick={handleSearch}>Search</button>
+            </div>
             {loading ? (
                 <p className="loading-text">Loading...</p>
             ) : (
@@ -45,14 +49,13 @@ function Search() {
                             {pets.map((pet) => (
                                 <li key={pet.id} className="pet-item">
                                     <h2 className="pet-name">{pet.name}</h2>
-                                    <p>Type: {pet.type}</p>
-                                    <p>Age: {pet.age}</p>
-                                    <p>Breed: {pet.breeds.primary}</p>
-                                    <p>Location: {pet.contact.address.city}, {pet.contact.address.state}</p>
-                                    <a href={`/pet/${pet.id}`}>View Details</a>
+                                    <p className="pet-description">{pet.description}</p>
                                 </li>
                             ))}
                         </ul>
+                    )}
+                    {pets.length === 0 && !loading && (
+                        <p className="no-pets-found">No pets found for your search.</p>
                     )}
                 </div>
             )}

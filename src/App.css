@@ -1,38 +1,137 @@
-.App {
-  text-align: center;
+.app-container {
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-header {
+    background-color: #007bff;
+    color: #3ee419;
+    padding: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-header h1 {
+    margin: 0;
+    font-size: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.app-content {
+    padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.app-footer {
+    background-color: #fcfbfb;
+    padding: 10px;
+    font-size: 14px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.home-desrciption {
+    font-size: 1.2em;
+    color: #666;
+    margin-top: 2opx;
+}
+
+.home-get-started {
+    font-size: 1.2em;
+    color: #2187f4;
+    margin-top: 20px;
+}
+
+.pet-details-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px soild #ddd;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.pet-details-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.loading-text {
+    font-size: 1.2em;
+    color: #777;
+    margin-top: 20px;
+}
+
+.pet-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.pet-type {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.pet-age {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.pet-breed {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.pet-description {
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.search-container {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px soild #ddd;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.search-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.loading-text {
+    font-size: 1.2em;
+    color: #777;
+    margin-top: 20px;
+}
+
+.no-pets-found {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.pet-item {
+    margin: 20px;
+    padding: 10px;
+    border: 1px soild #ddd;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.pet-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
 }
